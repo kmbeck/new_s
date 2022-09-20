@@ -8,7 +8,6 @@ import calc
 import directories as dirs
 import getopt
 import grid
-import simple
 import scrape
 import sys
 
