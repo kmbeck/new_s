@@ -7,10 +7,12 @@ USAGE:
     --help, -h -?
         Display this help message.
     --url_file, --uf
-        Specify filepath of URL list file to use.
+        Specify filepath of URL list file to use. 
+            defualt = 'res/urls/feed_urls.txt'
 
 DETAILS: 
-    Target .txt files should contain one RSS feed URL per line with no blank lines.
+    Target .txt files should contain one RSS feed URL per line with no blank
+    lines:
 
     www.myurl.com/rss
     www.myurl2.com/rss
