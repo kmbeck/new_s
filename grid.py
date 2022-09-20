@@ -30,7 +30,8 @@ class Grid:
         # Settings for effect
         self.loop_delay = 0.15
         self.density_factor = 0.5
-        # [width,height]
+       
+       # [width,height]
         self.dimensions = []
         self._refresh_dimensions()
 
@@ -39,7 +40,7 @@ class Grid:
 
         self._gen_cols()
         self._pop_col_bufs()
-        self._drop_down()
+        #self._drop_down()
 
     def begin_animation(self):
         '''Call this to updated the grid animation in a loop...'''
@@ -55,6 +56,7 @@ class Grid:
         if self.dimensions != prev_dimensions:
             # Reinitialize entire display when terminal size changes.
             self._gen_cols()
+            self._drop_down()
         self._pop_col_bufs()
         self._drip_down()
         
@@ -82,7 +84,7 @@ class Grid:
 
     def _drop_down(self):
         '''Hacky fast forward drip down...'''
-        for i in range(0,self.dimensions[1] * 3):
+        for i in range(0, self.dimensions[1] * 5):
             self._pop_col_bufs()
             self._drip_down()
 
