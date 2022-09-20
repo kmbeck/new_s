@@ -29,7 +29,7 @@ class Grid:
 
         # Settings for effect
         self.loop_delay = 0.15
-        self.density_factor = 0.2
+        self.density_factor = 0.5
         # [width,height]
         self.dimensions = []
         self._refresh_dimensions()
