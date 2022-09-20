@@ -1,0 +1,7 @@
+{
+	"dir_res":"/res/",
+	"dir_data":"/data/",
+	"dir_sh":"/sh/",
+	"file_cli_help":"/res/help.txt",
+	"file_word_filter":"/res/word_filter_list.txt"
+}

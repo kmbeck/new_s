@@ -1,0 +1,12 @@
+usage:
+	python3 cli.py --help | -h | -?
+	python3 cli.py --download_only
+	python3 cli.py --url_file '~/my_file.txt'
+	python3 cli.py --url_file '~/my_file.txt' --download_only
+
+--download_only
+	Only downloads and parses data. Does not generate any visuals.
+--help, -h, -?
+	View this help message.
+--url_file, --uf
+	Specify filepath of URL file to use.
