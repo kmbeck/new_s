@@ -2,13 +2,19 @@
 USAGE:
     python3 cli.py --help | -h | -?
     python3 cli.py --url_file ~/my_file.txt
-    python3 cli.py --uf ~/my_file.txt
+    python3 cli.py -f ~/my_file.txt --scroll_speed 0.15 --density 0.5
 
     --help, -h -?
         Display this help message.
-    --url_file, --uf
+    --url_file, -f
         Specify filepath of URL list file to use. 
             defualt = 'res/urls/feed_urls.txt'
+    --scroll_speed
+        Wait time between printing new lines. Lower values speed up the matrix
+        effect.
+    --density
+        How densely packed the word are in the matrix effect. Lower values mean
+        fewer words on the screen at one time.
 
 DETAILS: 
     Target .txt files should contain one RSS feed URL per line with no blank

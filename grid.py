@@ -38,13 +38,13 @@ class Grid:
         self.cols = []      # Columns displayed in terminal
         self.col_bufs = []  # str buffer 'above' terminal
 
-        self._gen_cols()
-        self._pop_col_bufs()
-        #self._drop_down()
-
     def begin_animation(self):
         '''Call this to updated the grid animation in a loop...'''
+        self._gen_cols()
+        #self._pop_col_bufs()
         self._drop_down()
+        print(self.loop_delay)
+        print(self.density_factor)
         while True:
             time.sleep(self.loop_delay)
             self.update()
@@ -72,7 +72,7 @@ class Grid:
                     new_line += ' '
             print(new_line)
 
-    def set_count_data(data):
+    def set_count_data(self, data):
         '''Set data this grid will use to generate data.'''
         self.count_data = data
 
@@ -106,8 +106,8 @@ class Grid:
         for c in self.col_bufs:
             if len(c) == 0:
                 while len(c) < self.dimensions[1]:
-                    density = (self.dimensions[1] / self.density_factor) - 1
-                    pad = ''.join([' ' for i in range(0, random.randint(3, density))])
+                    density = (self.dimensions[1] / self.density_factor)
+                    pad = ''.join([' ' for i in range(0, random.randint(3, int(density)))])
                     word = self._get_random_word()[::-1]
                     if len(c) + len(word) + len(pad) < self.dimensions[0] * 2:
                         c += word + pad

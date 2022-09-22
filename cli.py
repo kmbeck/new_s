@@ -10,6 +10,7 @@ import getopt
 import grid
 import scrape
 import sys
+import traceback
 
 def main(argv):
 
@@ -17,16 +18,19 @@ def main(argv):
 
     params = {      # Params & default values.
         'url_file':'res/urls/feed_urls.txt',
+        'scroll_speed':0.15,
+        'density':0.5
     }
     
     try:
         opts,args = getopt.getopt(
             argv,
-            'h?',
+            'h?f:',
             [
                 'help',
                 'url_file=',
-                'uf='
+                'scroll_speed=',
+                'density='
             ]
         )
     except getopt.GetoptError as e:
@@ -38,16 +42,21 @@ def main(argv):
         if opt in ['--help','-h','-?']:
             print(help_msg)
             return
-        elif opt in ['--url_file','--uf']:
+        elif opt in ['--url_file','-f']:
             params['url_file'] = val
+        elif opt == '--scroll_speed':
+            params['scroll_speed'] = float(val)
+        elif opt == '--density':
+            params['density'] = float(val)
 
     print('Beginning execution from command line.')
-    #print(str(params))
     data = scrape.compile_feed_data(params['url_file'])
     data = calc.clean_data(data)
     word_count = calc.calc_word_count(data)
     weighted_list = calc.gen_weighted_list(word_count) 
     matrix_effect = grid.Grid(weighted_list)
+    matrix_effect.loop_delay = params['scroll_speed']
+    matrix_effect.density_factor = params['density']
     matrix_effect.begin_animation()
             
 
